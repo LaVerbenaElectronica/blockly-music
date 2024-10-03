@@ -1,9 +1,9 @@
 main {
-  width: 800px;
+  width: 400px;
   position: relative;
   margin: 0 auto;
   overflow: hidden;
-  height: 800px;
+  height: 600px;
 }
 
 header {
