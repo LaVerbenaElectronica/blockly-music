@@ -54,6 +54,6 @@ javascript.javascriptGenerator.forBlock['play_sound'] = function (block) {
 };
 
 javascript.javascriptGenerator.forBlock['sample_speed'] = function (block) {
-  const value = "'" + block.getFieldValue('VALUE') + "'";
-  return 'MusicMaker.queueSound(' + value + ');\n';
+  const value = "'" + block.getFieldValue('rate') + "'";
+  return 'MusicMaker.queueSound(sounds/c4.m4a);\n';
 };

@@ -90,6 +90,10 @@
         kind: 'block',
         type: 'play_sound',
       },
+	  {
+        kind: 'block',
+        type: 'sample_speed',
+      },
     ],
   };
 
