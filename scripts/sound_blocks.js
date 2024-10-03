@@ -26,9 +26,34 @@ Blockly.defineBlocksWithJsonArray([
     nextStatement: null,
     colour: 355,
   },
+  {
+  type: "sample_speed",
+  tooltip: "Write 1 for normal speed, 2 for double",
+  helpUrl: "",
+  message0: "play sample with speed %1 %2",
+  args0: [
+    {
+      type: "field_number",
+      name: "rate",
+      value: 1
+    },
+    {
+      type: "input_end_row",
+      name: "speed"
+    }
+  ],
+  previousStatement: null,
+  nextStatement: null,
+  colour: 285
+  },                  
 ]);
 
 javascript.javascriptGenerator.forBlock['play_sound'] = function (block) {
+  const value = "'" + block.getFieldValue('VALUE') + "'";
+  return 'MusicMaker.queueSound(' + value + ');\n';
+};
+
+javascript.javascriptGenerator.forBlock['sample_speed'] = function (block) {
   const value = "'" + block.getFieldValue('VALUE') + "'";
   return 'MusicMaker.queueSound(' + value + ');\n';
 };
