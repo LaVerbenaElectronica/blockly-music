@@ -100,7 +100,7 @@
   Blockly.inject('blocklyDiv', {
     toolbox: toolbox,
     scrollbars: false,
-    horizontalLayout: true,
-    toolboxPosition: 'end',
+    horizontalLayout: false,
+    toolboxPosition: 'start',
   });
 })();

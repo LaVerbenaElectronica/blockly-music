@@ -1,5 +1,5 @@
 main {
-  width: 400px;
+  width: 600px;
   position: relative;
   margin: 0 auto;
   overflow: hidden;
@@ -35,10 +35,10 @@ h1 {
 .blockly-editor {
   position: absolute;
   top: 64px;
-  left: -400px;
+  left: -600px;
   transition: left 0.4s;
   height: 460px;
-  width: 400px;
+  width: 600px;
   background-color: #eee;
 }
 
@@ -51,7 +51,7 @@ h1 {
   flex-flow: column;
   justify-content: space-between;
   height: 460px;
-  width: 400px;
+  width: 600px;
 }
 
 .maker > div {
