@@ -70,30 +70,86 @@
   enableMakerMode();
 
   const toolbox = {
-    kind: 'flyoutToolbox',
+    kind: 'categoryToolbox',
     contents: [
       {
-        kind: 'block',
-        type: 'controls_repeat_ext',
-        inputs: {
-          TIMES: {
-            shadow: {
-              type: 'math_number',
-              fields: {
-                NUM: 5,
+        kind: "category",
+        name: "duration",
+        colour: "43",
+        contents: [
+          {
+            kind: 'block',
+            type: 'controls_repeat_ext',
+            inputs: {
+              TIMES: {
+                shadow: {
+                  type: 'math_number',
+                  fields: {
+                    NUM: 5,
+                  },
+                },
               },
             },
           },
-        },
+          {
+            kind: 'block',
+            type: 'play_sound',
+          },
+        ]
       },
       {
-        kind: 'block',
-        type: 'play_sound',
+        kind: "category",
+        name: "attack",
+        colour: "61",
+        contents: [],
       },
-	  {
-        kind: 'block',
-        type: 'sample_speed',
+      {
+        kind: "category",
+        name: "release",
+        colour: "75",
+        contents: [],
       },
+      {
+        kind: "category",
+        name: "harmonics",
+        colour: "315",
+        contents: [],
+      },
+      {
+        kind: "category",
+        name: "filtering",
+        colour: "357",
+        contents: [],
+      },
+      {
+        kind: "category",
+        name: "modulation",
+        colour: "110",
+        contents: [],
+      },
+      {
+        kind: "category",
+        name: "speed",
+        colour: "204",
+        contents: [
+          {
+            kind: 'block',
+            type: 'sample_speed',
+          },
+        ],
+      },
+      {
+        kind: "category",
+        name: "collages",
+        colour: "212",
+        contents: [],
+      },
+      {
+        kind: "category",
+        name: "effects",
+        colour: "159",
+        contents: [],
+      }
     ],
   };
 
