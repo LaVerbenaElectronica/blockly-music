@@ -74,8 +74,8 @@
     contents: [
       {
         kind: "category",
-        name: "duration",
-        colour: "43",
+        name: "control",
+        colour: "0",
         contents: [
           {
             kind: 'block',
@@ -91,6 +91,13 @@
               },
             },
           },
+        ]
+      },
+      {
+        kind: "category",
+        name: "duration",
+        colour: "43",
+        contents: [
           {
             kind: 'block',
             type: 'play_sound',
