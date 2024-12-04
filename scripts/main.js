@@ -3,6 +3,7 @@
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: Apache-2.0
  */
+
 (function () {
   let currentButton;
 
@@ -11,9 +12,15 @@
     let code = javascript.javascriptGenerator.workspaceToCode(
       Blockly.getMainWorkspace(),
     );
-    code += 'MusicMaker.play();';
+    code += 'MusicMaker.playSynth();';
+    //code += 'MusicMaker.play();';
     // Eval can be dangerous. For more controlled execution, check
     // https://github.com/NeilFraser/JS-Interpreter.
+    
+    if (Tone.context.state != "running") {
+      Tone.start();
+    }
+    
     try {
       eval(code);
     } catch (error) {
@@ -102,6 +109,10 @@
             kind: 'block',
             type: 'play_sound',
           },
+          {
+            kind: 'block',
+            type: 'play_duration',
+          },
         ]
       },
       {
@@ -138,12 +149,7 @@
         kind: "category",
         name: "speed",
         colour: "204",
-        contents: [
-          {
-            kind: 'block',
-            type: 'sample_speed',
-          },
-        ],
+        contents: [],
       },
       {
         kind: "category",
