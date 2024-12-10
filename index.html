@@ -1,64 +1,31 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <!-- libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/blockly/3.20200924.4/blockly_compressed.min.js"
+        integrity="sha512-QXLWks3csNuoy9T6AoZm8BewWPHVGUsz0HcWpTF6xH8Vv55GxI4h4h0+ghQHfdmv7nnm9GV4I5Y1kKOWWStf6g=="
+        crossorigin="anonymous"></script>
 
-    <title>Blockly for the Web Codelab</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/blockly/3.20200924.4/blocks_compressed.min.js"
+        integrity="sha512-6cPR7gw4XO/tr9eRpd2w7SJjBNMtMWa2SQbwhHNPKJb/ZJQR1WsSq+8EEMzt32Qpz46uc3DjHeRUwkAZqRlm3g=="
+        crossorigin="anonymous"></script>
 
-    <link
-      rel="stylesheet"
-      href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css" />
-    <link rel="stylesheet" href="styles/index.css" />
-  </head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/blockly/3.20200924.4/javascript_compressed.min.js"
+        integrity="sha512-EmvUjPJJkHoyFrSrvifuA/LcKMrtTIP5PV996fl1pWicyhqJeAbnSMzh9pM+VX7L/QZHdTozI9BA2e5g/8hB9Q=="
+        crossorigin="anonymous"></script>
 
-  <body mode="maker">
-    <header class="mdl-color--cyan-500">
-      <h1 class="mode-maker">Music Maker</h1>
-      <h1 class="mode-edit mode-blockly">BLOCKLY MUSIC PROJECT</h1>
-    </header>
-
-    <main>
-      <button class="mode-maker mdl-button" id="edit">Edit</button>
-      <button class="mode-edit mdl-button mdl-js-button" id="done">Done</button>
-      <button class="mode-blockly mdl-button mdl-js-button" id="save">
-        Save
-      </button>
-      <p class="hint mode-edit">
-        Tap any button to edit its code. <br />When complete, press Done.
-      </p>
-
-      <div class="maker">
-        <div>
-          <div class="button mdl-color--amber-500">Duration</div>
-          <div class="button mdl-color--yellow-500">Attack</div>
-          <div class="button mdl-color--lime-500">Release</div>
-        </div>
-        <div>
-          <div class="button mdl-color--pink-500">Harmonics</div>
-          <div class="button mdl-color--red-500">Filtering</div>
-          <div class="button mdl-color--light-green-500">Modulation</div>
-        </div>
-        <div>
-          <div class="button mdl-color--cyan-500">Speed</div>
-          <div class="button mdl-color--teal-500">Collages</div>
-          <div class="button mdl-color--green-500">Effects</div>
-        </div>
-      </div>
-
-      <div class="blockly-editor">
-        <div id="blocklyDiv" style="height: 480px; width: 600px"></div>
-      </div>
-    </main>
-
-    <script src="https://unpkg.com/blockly/blockly_compressed.js"></script>
-    <script src="https://unpkg.com/blockly/blocks_compressed.js"></script>
-    <script src="https://unpkg.com/blockly/javascript_compressed.js"></script>
-    <script src="https://unpkg.com/blockly/msg/en.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/blockly/3.20200924.4/msg/en.min.js"
+        integrity="sha512-CcZSuOhlsHqLLiF3M8hvMc8aWqTE36GEaE/cP7HMNOSZytGihNqhQxFzkXigYQp4psZWCVjEXY2oYFN4+vLAYg=="
+        crossorigin="anonymous"></script>
+    <!-- Load the Tone library -->
     <script src="http://unpkg.com/tone"></script>
-    <script src="scripts/sound_blocks.js"></script>
-    <script src="scripts/music_maker.js"></script>
-    <script src="scripts/main.js"></script>
-  </body>
+    <!-- Load the proper app -->
+    <script defer src="app.js"></script>
+</head>
+<body>
+    <button id="play-btn">Play</button>
+    <div id="blocklyDiv" style="height: 900px; width: 900px;"></div>
+
+
+</body>
 </html>
