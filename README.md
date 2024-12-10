@@ -1,16 +1,15 @@
 # Blockly Extended Music Project
 
-In this repo some additional blocks for contemporary music education are shown. 
-The template is taken from the getting-started example template of Blockly.
+In this repo some additional blocks for contemporary music education are shown. This implementation is based on Toneblocks (https://nime.org/proc/nime21_45/index.html) made by Michael Quigley, and William Payne.
+Its mainly purpose is to show a different approach on computer music education based on musical études instead of technical specifications.
 
 ## Fase 1
 
-At this moment a definition of all the required blocks is being made. Once all the requirements are gathered it will be possible to design the actual code for the creation of sounds.
+At this moment the project is designing the required blocks. The first approach to a possible classfication goes as following:
 
-It has being defined 9 groups of blocks: 
-
-* duration: For blocks describing different ways of expres duration of sounds.
-* attack: For blocks describing control over the beginning of different kind of sounds.
+* control: simple instructions that allow to repeat sounds (in development)
+* duration: For blocks describing duration of sounds.
+* envelope: For blocks describing control over the beginning, duration and end of different kind of sounds.
 * release: For blocks describing control over the ending of different kind of sounds.
 * harmonics: For blocks describing control over adding harmonic parts to an electronic sound.
 * filtering: For blocks describing control over adding harmonic parts to an electronic sound.
