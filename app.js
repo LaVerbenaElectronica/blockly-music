@@ -163,6 +163,19 @@ const toolbox = {
 
 
   // Create the definition of every custom Block.
+  Blockly.Blocks['controls_repeat_ext'] = {
+    init: function () {
+		this.appendEndRowInput()
+			.appendField('for each')
+			.appendField('item')
+			.appendField(new Blockly.FieldVariable(), "times");
+		this.appendStatementInput('DO')
+			.appendField('do');
+		this.appendDummyInput()
+			.appendField('end');
+    } 
+};
+
   Blockly.Blocks['wait'] = {
     init: function () {
         this.setPreviousStatement(true);
@@ -261,10 +274,16 @@ Blockly.Blocks['poly_note'] = {
 
 //********************   Implementation of every custom Block. ***********************************//
 //*********************************************************************************************** */
+Blockly.JavaScript['controls_repeat_ext'] = function (block) {
+  const times = block.getFieldValue('times');
+  const code = ``;
+  return code;
+};
+
 Blockly.JavaScript['wait'] = function (block) {
   const wait = block.getFieldValue('wait');
   timeDur = timeDur + wait;
-  const code = ``;
+  const code = `const loop = new Tone.Loop(function(time) {synth}, "2n").start(0);`;
   return code;
 };
 
