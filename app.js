@@ -1,12 +1,13 @@
 
 const playBTN = document.getElementById("play-btn");
+const stopBTN = document.getElementById("stop-btn");
 let timeDur = 0; //it controls the duration of the notes
 let num = 0; //it controls the number of synths on a given play.
 
 // Generate JavaScript code and run it
 async function runCode() {
 
-  await Tone.start();
+  await Tone.Transport.start();
 
   // convert workspace to text code
   Blockly.JavaScript.addReservedWords('code');
@@ -30,6 +31,10 @@ playBTN.addEventListener("click", () => {
   runCode();
 })
 
+stopBTN.addEventListener("click", () => {
+  Tone.Transport.stop();
+})
+
 const toolbox = {
     kind: 'categoryToolbox',
     contents: [
@@ -39,25 +44,15 @@ const toolbox = {
         colour: "212",
         contents: [
           {
-            kind: 'block',
-            type: 'controls_repeat_ext',
-            inputs: {
-              TIMES: {
-                shadow: {
-                  type: 'math_number',
-                  fields: {
-                    NUM: 5,
-                  },
-                },
-              },
-            },
+            "kind": 'block',
+            "type": 'loop',
           },
           {
             "kind": "block",
             "type": "math_number",
             "fields": {
               "NUM": 1
-            }
+          }
           },
           {
             "kind": "block",
@@ -163,12 +158,13 @@ const toolbox = {
 
 
   // Create the definition of every custom Block.
-  Blockly.Blocks['controls_repeat_ext'] = {
+  Blockly.Blocks['loop'] = {
     init: function () {
-		this.appendEndRowInput()
-			.appendField('for each')
-			.appendField('item')
-			.appendField(new Blockly.FieldVariable(), "times");
+		this.setPreviousStatement(true);
+		this.appendDummyInput()
+		    .appendField('repeat this')
+			.appendField('at')
+			.appendField(new Blockly.FieldDropdown([["slow", "2n"], ["medium", "4n"], ["fast", "8n"]]), "times");
 		this.appendStatementInput('DO')
 			.appendField('do');
 		this.appendDummyInput()
@@ -274,16 +270,30 @@ Blockly.Blocks['poly_note'] = {
 
 //********************   Implementation of every custom Block. ***********************************//
 //*********************************************************************************************** */
-Blockly.JavaScript['controls_repeat_ext'] = function (block) {
+Blockly.JavaScript['loop'] = function (block) {
   const times = block.getFieldValue('times');
-  const code = ``;
+  const statement_input = Blockly.JavaScript.statementToCode(block, 'DO');
+  const instructions = statement_input.split(";");
+  const synths = instructions.filter((linea) => linea.search("triggerAttackRelease") > -1);
+  const rest = instructions.filter((linea) => linea.search("triggerAttackRelease") == -1);
+  var originals = synths.map((linea) => linea.split("now + ")[0]);
+  var schedules = synths.map((linea) => linea.split("now + ")[1]);
+  originals = originals.map((linea) => linea.substring(0, linea.length - 2) + ");");
+  schedules = schedules.map((linea) => linea.substring(0, linea.length - 1));
+  
+  var code = ``;
+  rest.forEach((e, i) => {code = code + e + ';';});
+  originals.forEach((e, i) => {
+    const num = schedules[i];
+	code = code + 'var loop' + i + ' = new Tone.Loop(function(time){' + e + '}, "'+ times +'").start(now + ' + num + '); loop'+i+'.iterations = 4;'
+  });
   return code;
 };
 
 Blockly.JavaScript['wait'] = function (block) {
   const wait = block.getFieldValue('wait');
   timeDur = timeDur + wait;
-  const code = `const loop = new Tone.Loop(function(time) {synth}, "2n").start(0);`;
+  const code = ``;
   return code;
 };
 
