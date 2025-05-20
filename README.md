@@ -5,5 +5,4 @@ A previous project with this same technology is Toneblocks (https://nime.org/pro
 This repo was used at the ICLC2025 with the following purpose: to approach a different way to teach computer music with code, where teachers as well as students can create their own music blocks.
 The following guide was design for that workshop.
 
-## Fase 1
 
